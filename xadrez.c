@@ -17,14 +17,16 @@ int main() {
     // Implementação de Movimentação da Rainha
     // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
 
-    const int casabispo = 5, casatorre = 5, casarainha = 8;
+    const int casabispo = 5, casatorre = 5, casarainha = 8, casacavalo = 3;
     int move, set;
     int i = 1;
+    int k = 1;
 
     printf("Escolha qual jogada você irá realizar?\n");
     printf("Mover o Bispo em diagonal - aperte 1\n");
     printf("Mover a Torre para à direita - aperte 2\n");
     printf("Mover a Rainha para à esquerda - aperte 3\n");
+    printf("Mover o cavalo em L para à direita - aperte 4\n");
     printf("Escolha: ");
     scanf("%d", &move);
 
@@ -54,6 +56,22 @@ int main() {
         while (set <= casarainha && i <= set)
         {
             printf("A rainha se moveu %d vezes para à esquerda.\n",i);
+            i++;
+        }
+        break;
+    case 4:
+        printf("O cavalo pode andar até 3 casas, quantas casas você vai movelo: ");
+        scanf("%d", &set);
+        while (set <= casacavalo && i <= set)
+        {   
+            if (i<3){
+            printf("O cavalo se moveu %d vezes para cima.\n",i);
+            
+            }
+            while (i > 2 && k == 1){
+                printf("O cavalo se moveu 1 vez para a esquerda");
+                k++;
+            }
             i++;
         }
         break;
