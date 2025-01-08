@@ -3,6 +3,29 @@
 // Desafio de Xadrez - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+void bispo_move(int set, const int casabispo,int a){
+    if (set <= casabispo && set > 0) {
+        printf("O Bispo se moveu para à diagonal %d vezes.\n",a++);
+        bispo_move(set - 1,casabispo,a);
+    }
+
+};
+
+void Torre_move(int set, const int casatorre,int a){
+    if (set <= casatorre && set > 0) {
+        printf("À Torre se moveu para à direita %d vezes.\n",a++);
+        Torre_move(set - 1,casatorre,a);
+    }
+
+};
+
+void Rainha_move(int set, const int casarainha,int a){
+    if (set <= casarainha && set > 0) {
+        printf("À Rainha se moveu para à esquerda %d vezes.\n",a++);
+        bispo_move(set - 1,casarainha,a);
+    }
+
+};
 
 int main() {
     // Nível Novato - Movimentação das Peças
@@ -21,6 +44,7 @@ int main() {
     int move, set;
     int i = 1;
     int k = 1;
+    int a = 1;
 
     printf("Escolha qual jogada você irá realizar?\n");
     printf("Mover o Bispo em diagonal - aperte 1\n");
@@ -33,31 +57,29 @@ int main() {
     switch (move)
     {
     case 1:
-        printf("O Bispo pode andar até 5 casas, quantas casas você vai movelo: ");
-        scanf("%d", &set);
-        while (set <= casabispo && i <= set)
-        {
-            printf("O Bispo se moveu %i vezes para à diagonal.\n",i);
-            i++;
+        while (move == 1){
+            printf("O Bispo pode andar até 5 casas, quantas casas você vai movelo: ");
+            scanf("%d", &set);
+            if (set < 0 || set > 5){
+                continue;
+            }else{
+                bispo_move(set, casabispo, a);
+                break;
+            }
+
         }
+        
+
         break;
     case 2:
         printf("A Torre pode andar até 5 casas, quantas casas você vai movela: ");
         scanf("%d", &set);
-        while (set <= casatorre && i <= set)
-        {
-            printf("A torre se moveu %i vezes para à direita.\n",i);
-            i++;
-        }
+        Torre_move(set,casatorre,a);
         break;
     case 3:
         printf("A Rainha pode andar até 8 casas, quantas casas você vai movela: ");
         scanf("%d", &set);
-        while (set <= casarainha && i <= set)
-        {
-            printf("A rainha se moveu %d vezes para à esquerda.\n",i);
-            i++;
-        }
+        Rainha_move(set,casarainha,a);
         break;
     case 4:
         printf("O cavalo pode andar até 3 casas, quantas casas você vai movelo: ");
